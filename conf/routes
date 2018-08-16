@@ -1,0 +1,8 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+
+POST       /api/user/createUser             controllers.UserController.createUser()
+GET        /api/user/getUserById            controllers.UserController.getUserById(userId: String)
+GET        /api/user/getAllUsers            controllers.UserController.getAllUsers()
