@@ -10,6 +10,7 @@ scalaVersion := "2.11.7"
 organization := "be.objectify"
 
 libraryDependencies += jdbc
+libraryDependencies += evolutions
 
 libraryDependencies ++= Seq(
   evolutions,

@@ -19,7 +19,7 @@ public class UserRepository {
     Database database;
 
     public User createUser(User user) throws SQLException {
-        PreparedStatement preparedStatement = database.getConnection().prepareStatement("insert into users (id, firstName, lastName) values (null, ?, ?)", Statement.RETURN_GENERATED_KEYS);
+        PreparedStatement preparedStatement = database.getConnection().prepareStatement("insert into user (id, first_name, last_name) values (null, ?, ?)", Statement.RETURN_GENERATED_KEYS);
         preparedStatement.setString(1, user.getFirstName());
         preparedStatement.setString(2, user.getLastName());
         preparedStatement.execute();
@@ -32,16 +32,15 @@ public class UserRepository {
     }
 
     public Optional<User> getUserById(int userId) throws SQLException{
-        PreparedStatement preparedStatement = database.getConnection().prepareStatement("select * from users where id = ?");
+        PreparedStatement preparedStatement = database.getConnection().prepareStatement("select * from user where id = ?");
         preparedStatement.setInt(1, userId);
         preparedStatement.execute();
-
         ResultSet result = preparedStatement.getResultSet();
         if (result.next()) {
             User user = new User();
             user.setId(result.getInt("id"));
-            user.setFirstName(result.getString("firstName"));
-            user.setLastName(result.getString("lastName"));
+            user.setFirstName(result.getString("first_name"));
+            user.setLastName(result.getString("last_name"));
             return Optional.of(user);
         }
 
@@ -50,15 +49,15 @@ public class UserRepository {
     }
 
     public List<User> getAllUsers() throws SQLException {
-        PreparedStatement preparedStatement = database.getConnection().prepareStatement("select * from users");
+        PreparedStatement preparedStatement = database.getConnection().prepareStatement("select * from user");
         List<User> users = new ArrayList<>();
         preparedStatement.execute();
         ResultSet result = preparedStatement.getResultSet();
         while (result.next()) {
             User user = new User();
             user.setId(result.getInt("id"));
-            user.setFirstName(result.getString("firstName"));
-            user.setLastName(result.getString("lastName"));
+            user.setFirstName(result.getString("first_name"));
+            user.setLastName(result.getString("last_name"));
             users.add(user);
         }
         return users;

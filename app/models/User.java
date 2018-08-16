@@ -7,7 +7,6 @@ import javax.persistence.*;
 @Entity
 public class User extends Model {
 
-    @Id
     private int id;
     private String firstName;
     private String lastName;

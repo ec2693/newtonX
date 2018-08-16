@@ -15,6 +15,7 @@ public class UserService {
         try {
            return userRepository.createUser(user);
         }catch(Exception e){
+            e.printStackTrace();
             return null;
         }
 
@@ -32,6 +33,7 @@ public class UserService {
             }
 
         }catch(Exception e){
+            e.printStackTrace();
             return null;
         }
     }
@@ -40,6 +42,7 @@ public class UserService {
         try {
             return userRepository.getAllUsers();
         }catch(Exception e){
+            e.printStackTrace();
             return null;
         }
 
