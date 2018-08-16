@@ -1,0 +1,10 @@
+I have used play framework starter java project to build this application and MySQL database
+
+Database config are defined in configuration/application.conf i.e databaseName, userName and password, need to comment out the in-memory config and uncomment mySQL config.
+
+Three routes have been defined in the route file and can be tested using postman, on localhost:9000
+
+Project can be compile and run using "sbt compile run"
+
+Used gson library to convert POST body json to user model and serialize the user object to send in response for GET Apis.
+
